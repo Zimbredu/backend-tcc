@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//Comando para criar uma migration => yarn prisma migrate dev
+model CadastroUsuario{
+  id String @id @default(uuid())
+  name String
+  email String
+  password String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("usuarios")
+}
+
+model CategoriaServico{
+  id String @id @default(uuid())
+  name String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("catergoriaservicos")
+  sevicos Servico[]
+
+}
+
+model Servico{
+  id String @id @default(uuid())
+  name String  
+  description String
+  banner String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  categoriaservico CategoriaServico @relation(fields: [id_Categoria], references: [id])
+
+  @@map("servicos")
+  id_Categoria String
+  itemservicos IntergranteEquipes[]
+}
+
+model RequisicaoServico{
+  id String @id @default(uuid())
+  userService Int
+  status Boolean @default(false)
+  name String?
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("requisicaoservicos")
+  itemservicos IntergranteEquipes[]
+}
+
+model IntergranteEquipes{
+  id String @id @default(uuid())
+  amount Int
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  requisicaoservico RequisicaoServico @relation(fields: [id_RequisicaoServico], references: [id])
+  servico Servico @relation(fields: [id_Servico], references: [id])
+
+  @@map("itemservicos")//trocar por integranteEqupe
+  id_RequisicaoServico String
+  id_Servico String
+}
