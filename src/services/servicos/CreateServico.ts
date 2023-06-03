@@ -1,21 +1,23 @@
 import prismaClient from "../../prisma";
 
-interface ServicoRequest{
+interface TaskRequest{
     name: string;
     description: string;
     banner: string;
-    id_Categoria: string;
+    /* id_Categoria: string; */
+    catergoria_tarefa_id: string;
 }
 
-class CreateService{
-    async execute({name, description, banner, id_Categoria}: ServicoRequest){
+class CreateTaskService{
+    async execute({name, description, banner /* id_Categoria */, catergoria_tarefa_id}: TaskRequest){
       
-      const servico = await prismaClient.servico.create({
+      const servico = await prismaClient.tarefa.create({
         data:{
           name: name,
           description: description,
           banner: banner,
-          id_Categoria,
+          /* id_Categoria, */
+          catergoria_tarefa_id,
         }
       })
      
@@ -24,4 +26,4 @@ class CreateService{
     }
 }
 
-export {CreateService}
+export { CreateTaskService  }

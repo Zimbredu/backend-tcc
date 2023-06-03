@@ -11,7 +11,7 @@ datasource db {
 }
 
 //Comando para criar uma migration => yarn prisma migrate dev
-model CadastroUsuario{
+model CadastroUsuario{//user table
   id String @id @default(uuid())
   name String
   email String
@@ -19,21 +19,20 @@ model CadastroUsuario{
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  @@map("usuarios")
+  @@map("cadastro_usuarios")
 }
 
-model CategoriaServico{
+model Categoria_Tarefa{// category table
   id String @id @default(uuid())
   name String
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  @@map("catergoriaservicos")
-  sevicos Servico[]
-
+  @@map("catergoria_tarefas")
+  tarefas Tarefa[]
 }
 
-model Servico{
+model Tarefa{//product table
   id String @id @default(uuid())
   name String  
   description String
@@ -41,36 +40,38 @@ model Servico{
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  categoriaservico CategoriaServico @relation(fields: [id_Categoria], references: [id])
+  tarefa Categoria_Tarefa @relation(fields: [catergoria_tarefa_id], references: [id]) 
 
-  @@map("servicos")
-  id_Categoria String
-  itemservicos IntergranteEquipes[]
+  @@map("tarefas")
+  catergoria_tarefa_id String
+   itemtarefas IntergranteTarefa[]
 }
 
-model RequisicaoServico{
+model Requisicao_Tarefa{//order table
   id String @id @default(uuid())
-  userService Int
+  task Int
   status Boolean @default(false)
-  name String?
+  draft Boolean @default(true)
+  name String
+
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  @@map("requisicaoservicos")
-  itemservicos IntergranteEquipes[]
+  @@map("requisicao_tarefas")
+  itemtarefas IntergranteTarefa[]
 }
 
-model IntergranteEquipes{
+model IntergranteTarefa{//orderItem table
   id String @id @default(uuid())
   amount Int
 
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  requisicaoservico RequisicaoServico @relation(fields: [id_RequisicaoServico], references: [id])
-  servico Servico @relation(fields: [id_Servico], references: [id])
+  requisicaotarefas Requisicao_Tarefa @relation(fields: [requisicao_tarefa_id], references: [id])
+  tarefa Tarefa @relation(fields: [tarefa_id], references: [id])
 
-  @@map("itemservicos")//trocar por integranteEqupe
-  id_RequisicaoServico String
-  id_Servico String
+  @@map("integrantes_tarefas")
+  requisicao_tarefa_id String
+  tarefa_id String
 }

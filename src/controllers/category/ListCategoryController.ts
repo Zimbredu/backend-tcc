@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { ListCategoryService } from "../../services/category/ListCategoryService";
+import { ListCategoryTask } from "../../services/category/ListCategoryService";
+/* import { ListCategoryService } from "../../services/category/ListCategoryService"; */
 
 class ListCategoryController{
     async handle(req: Request, res: Response){
-        const listaCategoryService = new ListCategoryService();
+        const listaCategoryTask = new ListCategoryTask();
 
-        const category = await listaCategoryService.execute();
+        const category = await listaCategoryTask.execute();
 
         return res.json(category);
     }

@@ -67,7 +67,7 @@ router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 // rota para listar todos os serviços/task confirmado, mas não finalizados.
 router.get('/orders', isAuthenticated, new ListOrdersController().handle);
 // rota para listar os detalhes serviço/task
-router.get('/order/datail', isAuthenticated, new DatailOrderController().handle);
+router.get('/order/detail', isAuthenticated, new DatailOrderController().handle);
 
 router.put('/order/finish', isAuthenticated, new FinishOrderController().handle);
 

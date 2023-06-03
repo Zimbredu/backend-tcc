@@ -1,11 +1,12 @@
 import {Request, Response} from 'express';
-import { CreateService } from '../../services/servicos/CreateServico';
+import { CreateTaskService } from '../../services/servicos/CreateServico';
+/* import { CreateService } from '../../services/servicos/CreateServico'; */
 
 class CreateServicoController{
     async handle(req: Request, res: Response){
-        const{name, description, id_Categoria} = req.body;
+        const{name, description, /* id_Categoria */catergoria_tarefa_id} = req.body;
 
-        const createServico = new CreateService();
+        const createTaskService = new CreateTaskService();
 
         if(!req.file){
             throw new Error('erro ao carregar arquivo')
@@ -13,13 +14,14 @@ class CreateServicoController{
 
             const {originalname, filename: banner} = req.file;
 
-            const servico = await createServico.execute({
+            const task = await createTaskService.execute({
                 name,
                 description,
                 banner, 
-                id_Categoria
+               /*  id_Categoria */
+               catergoria_tarefa_id
             });
-            return res.json(servico);
+            return res.json(task);
         }
 
     }
