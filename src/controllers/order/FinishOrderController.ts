@@ -5,14 +5,14 @@ import { FinishOrderService } from "../../services/order/FinishOrderService";
 class FinishOrderController{
     async handle(req: Request, res: Response){
 
-        const { id_Servico} = req.body;
+        const { requisicao_tarefa_id } = req.body;
         
         const finishOrderService = new FinishOrderService();
 
-        const order = await finishOrderService.execute({
-            id_Servico,
+        const task = await finishOrderService.execute({
+            requisicao_tarefa_id,
         });
-        return res.json(order);
+        return res.json(task);
     }
 }
 

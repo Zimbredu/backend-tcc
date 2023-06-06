@@ -68,7 +68,7 @@ router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 router.get('/orders', isAuthenticated, new ListOrdersController().handle);
 // rota para listar os detalhes serviço/task
 router.get('/order/detail', isAuthenticated, new DatailOrderController().handle);
-
+// rota para finalizar uma tarefa.
 router.put('/order/finish', isAuthenticated, new FinishOrderController().handle);
 
 export { router }

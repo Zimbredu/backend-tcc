@@ -1,20 +1,20 @@
 import prismaClient from "../../prisma";
 
 interface ItemRequest{
-    id_RequisicaoServico: string;
-    id_Servico: string;
+    requisicao_tarefa_id: string;
+    tarefa_id: string;
     amount: number;
 }
 
 /*  id_RequisicaoServico String
   id_Servico String */
 class AddItemService{
-    async execute({id_RequisicaoServico, id_Servico, amount}: ItemRequest){
+    async execute({requisicao_tarefa_id, tarefa_id, amount}: ItemRequest){
 
-        const order = await prismaClient.intergranteEquipes.create({
+        const order = await prismaClient.intergranteTarefa.create({
             data:{
-                id_RequisicaoServico: id_RequisicaoServico,
-                id_Servico: id_Servico,
+                requisicao_tarefa_id: requisicao_tarefa_id,
+                tarefa_id: tarefa_id,
                 amount
             }
         })

@@ -2,20 +2,20 @@ import prismaClient from "../../prisma";
 
 
 interface OrderRequest{
-    order_id: string;
+     requisicao_tarefa_id: string 
 }
 
 class SendOrderService{
-    async execute({order_id}: OrderRequest){
-        const order = await prismaClient.requisicaoServico.update({
+    async execute({requisicao_tarefa_id}: OrderRequest){
+        const task = await prismaClient.requisicao_Tarefa.update({
             where:{
-                id: order_id
+                id: requisicao_tarefa_id
             },
             data:{
                 draft: false
             }
         })
-        return order;
+        return task;
     }
 } 
 

@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 class ListOrdersService{
     async execute(){
 
-        const orders = await prismaClient.requisicaoServico.findMany({
+        const orders = await prismaClient.requisicao_Tarefa.findMany({
             where:{
                 draft: false,
                 status: false,
