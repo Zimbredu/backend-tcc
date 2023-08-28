@@ -36,14 +36,13 @@ model Tarefa{//product table
   id String @id @default(uuid())
   name String  
   description String
-  banner String
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  tarefa Categoria_Tarefa @relation(fields: [catergoria_tarefa_id], references: [id]) 
+  tarefa Categoria_Tarefa @relation(fields: [categoria_tarefa_id], references: [id]) 
 
   @@map("tarefas")
-  catergoria_tarefa_id String
+  categoria_tarefa_id String
    itemtarefas IntergranteTarefa[]
 }
 

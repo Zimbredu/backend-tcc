@@ -48,7 +48,8 @@ router.get('/category' ,isAuthenticated, new ListCategoryController().handle);
 
 /* --ROTAS SERVICO-- */
 // rota para criar um serviço/tarefa.
-router.post('/tasks',isAuthenticated, upload.single('file'), new CreateServicoController().handle);
+/* router.post('/tasks',isAuthenticated, upload.single('file'), new CreateServicoController().handle); */
+router.post('/tasks',isAuthenticated, new CreateServicoController().handle);
 // rota para lista um produto pelo id_Categoria.
 router.get('/category/service',isAuthenticated, new ListByCategoryController().handle);
 

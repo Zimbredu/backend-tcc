@@ -25,10 +25,9 @@ CREATE TABLE "tarefas" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "banner" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
-    "catergoria_tarefa_id" TEXT NOT NULL,
+    "categoria_tarefa_id" TEXT NOT NULL,
 
     CONSTRAINT "tarefas_pkey" PRIMARY KEY ("id")
 );
@@ -59,7 +58,7 @@ CREATE TABLE "integrantes_tarefas" (
 );
 
 -- AddForeignKey
-ALTER TABLE "tarefas" ADD CONSTRAINT "tarefas_catergoria_tarefa_id_fkey" FOREIGN KEY ("catergoria_tarefa_id") REFERENCES "catergoria_tarefas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "tarefas" ADD CONSTRAINT "tarefas_categoria_tarefa_id_fkey" FOREIGN KEY ("categoria_tarefa_id") REFERENCES "catergoria_tarefas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "integrantes_tarefas" ADD CONSTRAINT "integrantes_tarefas_requisicao_tarefa_id_fkey" FOREIGN KEY ("requisicao_tarefa_id") REFERENCES "requisicao_tarefas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
