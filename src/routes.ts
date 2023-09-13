@@ -5,10 +5,10 @@ import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuthUserController } from './controllers/user/AuthUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
 
-import { CreateCategoryController } from './controllers/category/CreateCategoryController';
-import { ListCategoryController } from './controllers/category/ListCategoryController';
+import { CreateCategoryController } from './controllers/priority/CreateCategoryController';
+import { ListCategoryController } from './controllers/priority/ListCategoryController';
 
-import { CreateServicoController } from './controllers/servicos/CreateServicoController';
+import { CreateTaskController } from './controllers/servicos/CreateTaskController';
 import { ListByCategoryController } from './controllers/servicos/ListByCategoryController';
 
 import { CreateOrderController } from './controllers/order/CreateOrderController';
@@ -48,7 +48,7 @@ router.get('/category' ,isAuthenticated, new ListCategoryController().handle);
 
 /* --ROTAS SERVICO-- */
 // rota para criar um serviço/tarefa.
-router.post('/tasks',isAuthenticated, upload.single('file'), new CreateServicoController().handle);
+router.post('/task',isAuthenticated, upload.single('file'), new CreateTaskController().handle);
 // rota para lista um produto pelo id_Categoria.
 router.get('/category/service',isAuthenticated, new ListByCategoryController().handle);
 

@@ -22,13 +22,16 @@ model CadastroUsuario{//user table
   @@map("cadastro_usuarios")
 }
 
-model Categoria_Tarefa{// category table
+model Prioridade_Tarefa{// category table
   id String @id @default(uuid())
-  name String
+  prioridade01 Boolean @default(false)
+  prioridade02 Boolean @default(false)
+  prioridade03 Boolean @default(false)
+  prioridade04 Boolean @default(false)
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  @@map("catergoria_tarefas")
+  @@map("prioridade_tarefas")
   tarefas Tarefa[]
 }
 
@@ -36,15 +39,14 @@ model Tarefa{//product table
   id String @id @default(uuid())
   name String  
   description String
-  banner String
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  tarefa Categoria_Tarefa @relation(fields: [catergoria_tarefa_id], references: [id]) 
+  prioridade Prioridade_Tarefa @relation(fields: [prioridade_id], references: [id]) 
 
   @@map("tarefas")
-  catergoria_tarefa_id String
-   itemtarefas IntergranteTarefa[]
+  prioridade_id String
+  itemtarefas IntergranteTarefa[]
 }
 
 model Requisicao_Tarefa{//order table
