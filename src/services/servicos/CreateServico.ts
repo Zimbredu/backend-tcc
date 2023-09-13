@@ -17,7 +17,7 @@ class CreateTaskService{
           description: description,
           banner: banner,
           /* id_Categoria, */
-          catergoria_tarefa_id,
+          catergoria_tarefa_id: catergoria_tarefa_id,
         }
       })
      
