@@ -1,15 +1,16 @@
 import prismaClient from "../../prisma";
 
 interface ItemRequest{
-    id_Servico: string;
+    /* requisicao_tarefa_id: string; */
+    integrante_id: string
 }
 
 class RemoveItemService{
-    async execute({id_Servico}: ItemRequest){
+    async execute({  integrante_id }: ItemRequest){
 
-        const order = await prismaClient.intergranteEquipes.delete({
+        const order = await prismaClient.intergranteTarefa.delete({
             where:{
-                id: id_Servico
+                id: integrante_id 
             }
         })
         return order;

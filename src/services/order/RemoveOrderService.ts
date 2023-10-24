@@ -5,9 +5,9 @@ interface OrderRequest{
 }
 
 class RemoveOrderService{
-    async execute({ order_id}: OrderRequest){
+    async execute({ order_id }: OrderRequest){
 
-        const order = await prismaClient.requisicaoServico.delete({
+        const order = await prismaClient.requisicao_Tarefa.delete({
             where:{
                 id: order_id,
             }
