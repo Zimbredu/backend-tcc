@@ -3,17 +3,19 @@ import prismaClient from "../../prisma";
 interface TaskRequest{
     name: string;
     description: string;
-    categoria_tarefa_id: string;
+    /* id_Categoria: string; */
+    prioridade: string;
 }
 
 class CreateTaskService{
-    async execute({name, description, categoria_tarefa_id}: TaskRequest){
+    async execute({name, description, /* id_Categoria */ prioridade}: TaskRequest){
       
       const servico = await prismaClient.tarefa.create({
         data:{
           name: name,
           description: description,
-          categoria_tarefa_id: categoria_tarefa_id
+          /* id_Categoria, */
+          prioridade_id: prioridade
         }
       })
      

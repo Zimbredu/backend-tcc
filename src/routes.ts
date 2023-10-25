@@ -5,10 +5,10 @@ import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuthUserController } from './controllers/user/AuthUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
 
-import { CreateCategoryController } from './controllers/category/CreateCategoryController';
-import { ListCategoryController } from './controllers/category/ListCategoryController';
+import { CreateCategoryController } from './controllers/priority/CreateCategoryController';
+import { ListCategoryController } from './controllers/priority/ListCategoryController';
 
-import { CreateServicoController } from './controllers/servicos/CreateServicoController';
+import { CreateTaskController } from './controllers/servicos/CreateTaskController';
 import { ListByCategoryController } from './controllers/servicos/ListByCategoryController';
 
 import { CreateOrderController } from './controllers/order/CreateOrderController';
@@ -48,7 +48,12 @@ router.get('/category' ,isAuthenticated, new ListCategoryController().handle);
 
 /* --ROTAS SERVICO-- */
 // rota para criar um serviço/tarefa.
-router.post('/tasks',isAuthenticated, upload.single('file'), new CreateServicoController().handle);
+<<<<<<< HEAD
+/* router.post('/tasks',isAuthenticated, upload.single('file'), new CreateServicoController().handle); */
+router.post('/tasks',isAuthenticated, new CreateServicoController().handle);
+=======
+router.post('/task',isAuthenticated, upload.single('file'), new CreateTaskController().handle);
+>>>>>>> 996e797606cdc5b700fa6d013ebf1b4af1da12e9
 // rota para lista um produto pelo id_Categoria.
 router.get('/category/service',isAuthenticated, new ListByCategoryController().handle);
 

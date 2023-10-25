@@ -3,12 +3,10 @@ import prismaClient from "../../prisma";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-
 interface AuthRequest{
     email: string;
     password: string;
 }
-
 
 class AuthUserService{
     async execute({ email, password }: AuthRequest){
@@ -34,7 +32,7 @@ class AuthUserService{
         const token = sign(
             {
                 name: user.name,
-                email: email
+                email: user.email
             },
             process.env.JWT_SECRET,
             {
@@ -52,4 +50,4 @@ class AuthUserService{
     }
 }
 
-export {AuthUserService}
+export {AuthUserService};
