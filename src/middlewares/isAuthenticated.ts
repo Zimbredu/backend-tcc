@@ -17,7 +17,9 @@ export function isAuthenticated(
     if(!authToken){
         return res.status(401).end();
     }
+
     const [, token] = authToken.split(" ");
+    
     try {
         //Validar esse token
         const { sub } = verify(
@@ -25,11 +27,11 @@ export function isAuthenticated(
             process.env.JWT_SECRET
         )as PayLoad;
 
-            /* Recuperar o id do token e colocar dentro 
-            de uma variável user_id dentre do req; */
-            req.user_id = sub;
+        /* Recuperar o id do token e colocar dentro 
+        de uma variável user_id dentro do req; */
+        req.user_id = sub;
 
-            return next();
+        return next();
 
     } catch (error) {
         return res.status(401).end();

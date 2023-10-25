@@ -1,15 +1,15 @@
 import prismaClient from "../../prisma";
 
 interface ServicoRequest{
-    id_Categoria: string;
+    id: string;
 }
 
 class ListByCategoryService{
-    async execute({ id_Categoria }: ServicoRequest){
+    async execute({ id }: ServicoRequest){
 
-        const findByCategoryService = await prismaClient.servico.findMany({
+        const findByCategoryService = await prismaClient.categoria_Tarefa.findMany({
             where:{
-                id_Categoria: id_Categoria
+                id: id
             }
         })
 
