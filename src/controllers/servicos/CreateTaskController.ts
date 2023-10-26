@@ -4,21 +4,15 @@ import { CreateTaskService } from '../../services/servicos/CreateTaskService';
 
 class CreateTaskController{
     async handle(req: Request, res: Response){
-        const{name, description, /* id_Categoria */ prioridade} = req.body;
+        const{name, description, /* id_Categoria */ prioridade_id} = req.body;
 
         const createTaskService = new CreateTaskService();
-
-        // if(!req.file){
-        //     throw new Error('erro ao carregar arquivo')
-        // }else{
-
-            //const {originalname, filename: banner} = req.file;
 
             const task = await createTaskService.execute({
                 name,
                 description,
                /*  id_Categoria */
-               prioridade
+                prioridade_id
             });
             return res.json(task);
         //}

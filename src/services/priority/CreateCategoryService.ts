@@ -1,34 +1,30 @@
 import prismaClient from "../../prisma";
 
 interface PrioridadeRequest{
-    prioridade01: boolean;
-    prioridade02: boolean;
-    prioridade03: boolean;
-    prioridade04: boolean;
+    prioridade: number;
 }
 
  /* class CreateCategoryService{ */
- class CreateCategoryTask{
-    async execute({prioridade01, prioridade02, prioridade03, prioridade04}: PrioridadeRequest){
+class CreateCategoryTask{
+    async execute({prioridade}: PrioridadeRequest){
         
 
-         if(prioridade01 === null){
-                throw new Error('Prioridade invalida')
-        }
+        //  if(prioridade01 === null){
+        //         throw new Error('Prioridade invalida')
+        // }
+
+
         /* const category = await prismaClient.categoriaServico.create({ */
-        const prioridade = await prismaClient.prioridade_Tarefa.create({
+        const priority = await prismaClient.prioridade_Tarefa.create({
             data:{
-                prioridade01: prioridade01,
-                prioridade02: prioridade02,
-                prioridade03: prioridade03,
-                prioridade04: prioridade04
+                prioridade: prioridade
             },
             select:{
                 id: true,
-                prioridade01: true,
+                prioridade: true
             }
         })
-        return prioridade;
+        return priority;
    }
 }
 export {CreateCategoryTask}

@@ -7,7 +7,7 @@ interface ServicoRequest{
 class ListByCategoryService{
     async execute({ id }: ServicoRequest){
 
-        const findByCategoryService = await prismaClient.categoria_Tarefa.findMany({
+        const findByCategoryService = await prismaClient.prioridade_Tarefa.findMany({
             where:{
                 id: id
             }
