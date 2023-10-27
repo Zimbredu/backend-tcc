@@ -22,7 +22,7 @@ model CadastroUsuario{//user table
   @@map("cadastro_usuarios")
 }
 
-model Categoria_Tarefa{// category table
+model Prioridade_Tarefa{// category table
   id String @id @default(uuid())
   prioridade Int @default(0)
   
@@ -44,8 +44,8 @@ model Tarefa{//product table
   prioridade Prioridade_Tarefa? @relation(fields: [prioridade_id], references: [id]) 
 
   @@map("tarefas")
-  categoria_tarefa_id String
-   itemtarefas IntergranteTarefa[]
+  prioridade_id String
+  itemtarefas IntergranteTarefa[]
 }
 
 model Requisicao_Tarefa{//order table
