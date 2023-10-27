@@ -24,11 +24,12 @@ model CadastroUsuario{//user table
 
 model Categoria_Tarefa{// category table
   id String @id @default(uuid())
-  name String
+  prioridade Int @default(0)
+  
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  @@map("catergoria_tarefas")
+  @@map("prioridade_tarefa")
   tarefas Tarefa[]
 }
 
@@ -39,7 +40,8 @@ model Tarefa{//product table
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  tarefa Categoria_Tarefa @relation(fields: [categoria_tarefa_id], references: [id]) 
+  // Coloquei "?" para fazer a migration
+  prioridade Prioridade_Tarefa? @relation(fields: [prioridade_id], references: [id]) 
 
   @@map("tarefas")
   categoria_tarefa_id String

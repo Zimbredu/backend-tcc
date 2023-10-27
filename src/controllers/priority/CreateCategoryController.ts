@@ -5,15 +5,12 @@ import { CreateCategoryTask } from "../../services/priority/CreateCategoryServic
 
 class CreateCategoryController{
     async handle(req: Request, res: Response){
-        const {prioridade01, prioridade02, prioridade03, prioridade04} = req.body;
+        const {prioridade} = req.body;
 
         const createCategoryTask = new CreateCategoryTask();
 
         const category = await createCategoryTask.execute({
-            prioridade01,
-            prioridade02,
-            prioridade03,
-            prioridade04
+            prioridade
         });
 
         return res.json(category);

@@ -48,7 +48,7 @@ router.get('/category' ,isAuthenticated, new ListCategoryController().handle);
 
 /* --ROTAS SERVICO-- */
 // rota para criar um serviço/tarefa.
-router.post('/task',isAuthenticated, upload.single('file'), new CreateTaskController().handle);
+router.post('/tasks',isAuthenticated, upload.single('file'), new CreateTaskController().handle);
 // rota para lista um produto pelo id_Categoria.
 router.get('/category/service',isAuthenticated, new ListByCategoryController().handle);
 
@@ -57,10 +57,14 @@ router.get('/category/service',isAuthenticated, new ListByCategoryController().h
 router.post('/order',isAuthenticated, new CreateOrderController().handle);
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle);
 
-// rota para adicionar um integrante a equipe.
-router.post('/order/add', isAuthenticated, new AddItemController().handle);
-// rota para deletar um integrante da equipe.
-router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle);
+    // Retirar
+    // rota para adicionar um integrante a equipe.
+    router.post('/order/add', isAuthenticated, new AddItemController().handle);
+
+    // Retirar
+    // rota para deletar um integrante da equipe.
+    router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle);
+
 // rota para atualizar um requisiçãoServico de (true para false).
 router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 
