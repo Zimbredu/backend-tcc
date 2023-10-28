@@ -5,11 +5,11 @@ import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuthUserController } from './controllers/user/AuthUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
 
-import { CreateCategoryController } from './controllers/priority/CreateCategoryController';
-import { ListCategoryController } from './controllers/priority/ListCategoryController';
+import { CreateCategoryController } from './controllers/category/CreateCategoryController';
+import { ListCategoryController } from './controllers/category/ListCategoryController';
 
-import { CreateTaskController } from './controllers/servicos/CreateTaskController';
-import { ListByCategoryController } from './controllers/servicos/ListByCategoryController';
+import { CreateTaskController } from './controllers/task/CreateTaskController';
+import { ListTaskController } from './controllers/task/ListTaskController';
 
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
@@ -50,7 +50,7 @@ router.get('/category' ,isAuthenticated, new ListCategoryController().handle);
 // rota para criar um serviço/tarefa.
 router.post('/task',isAuthenticated, upload.single('file'), new CreateTaskController().handle);
 // rota para lista um produto pelo id_Categoria.
-router.get('/category/service',isAuthenticated, new ListByCategoryController().handle);
+router.get('/category/service',isAuthenticated, new ListTaskController().handle);
 
 /* --ROTAS ORDER-- */
 // rota para cadastrar uma ordem de serviço.

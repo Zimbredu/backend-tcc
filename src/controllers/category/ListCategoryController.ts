@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListCategoryTask } from "../../services/priority/ListCategoryService";
+import { ListCategoryTask } from "../../services/category/ListCategoryService";
 /* import { ListCategoryService } from "../../services/category/ListCategoryService"; */
 
 class ListCategoryController{

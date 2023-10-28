@@ -1,10 +1,9 @@
 import {Request, Response} from 'express';
-import { CreateTaskService } from '../../services/servicos/CreateTaskService';
-/* import { CreateService } from '../../services/servicos/CreateServico'; */
+import {CreateTaskService} from '../../services/task/CreateTaskService'
 
 class CreateTaskController{
     async handle(req: Request, res: Response){
-        const{name, description, /* id_Categoria */ prioridade} = req.body;
+        const{name, description, categoria_tarefa_id} = req.body;
 
         const createTaskService = new CreateTaskService();
 
@@ -17,8 +16,7 @@ class CreateTaskController{
             const task = await createTaskService.execute({
                 name,
                 description,
-               /*  id_Categoria */
-               prioridade
+                categoria_tarefa_id
             });
             return res.json(task);
         //}
