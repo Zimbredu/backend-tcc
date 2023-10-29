@@ -7,12 +7,6 @@ class CreateTaskController{
 
         const createTaskService = new CreateTaskService();
 
-        // if(!req.file){
-        //     throw new Error('erro ao carregar arquivo')
-        // }else{
-
-            //const {originalname, filename: banner} = req.file;
-
             const task = await createTaskService.execute({
                 name,
                 description,

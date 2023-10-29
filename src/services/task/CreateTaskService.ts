@@ -13,7 +13,7 @@ class CreateTaskService{
         data:{
           name: name,
           description: description,
-          categoria_tarefa_id: categoria_tarefa_id
+          categoria_tarefa_id:categoria_tarefa_id
         }
       })
      
