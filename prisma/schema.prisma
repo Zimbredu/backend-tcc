@@ -28,7 +28,7 @@ model Categoria_Tarefa{// category table
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  @@map("catergoria_tarefas")
+  @@map("categoria_tarefas")
   tarefas Tarefa[]
 }
 
