@@ -62,7 +62,7 @@ model Requisicao_Tarefa{//order table
 
 model IntergranteTarefa{//Items table
   id String @id @default(uuid())
-  amount Int //qtd de intergrantes para realizar a tarefa.
+  amount Int? //qtd de intergrantes para realizar a tarefa.
 
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())

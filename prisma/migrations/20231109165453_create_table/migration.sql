@@ -11,13 +11,13 @@ CREATE TABLE "cadastro_usuarios" (
 );
 
 -- CreateTable
-CREATE TABLE "catergoria_tarefas" (
+CREATE TABLE "categoria_tarefas" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "catergoria_tarefas_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "categoria_tarefas_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -48,7 +48,7 @@ CREATE TABLE "requisicao_tarefas" (
 -- CreateTable
 CREATE TABLE "integrantes_tarefas" (
     "id" TEXT NOT NULL,
-    "amount" INTEGER NOT NULL,
+    "amount" INTEGER,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "requisicao_tarefa_id" TEXT NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE "integrantes_tarefas" (
 );
 
 -- AddForeignKey
-ALTER TABLE "tarefas" ADD CONSTRAINT "tarefas_categoria_tarefa_id_fkey" FOREIGN KEY ("categoria_tarefa_id") REFERENCES "catergoria_tarefas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "tarefas" ADD CONSTRAINT "tarefas_categoria_tarefa_id_fkey" FOREIGN KEY ("categoria_tarefa_id") REFERENCES "categoria_tarefas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "integrantes_tarefas" ADD CONSTRAINT "integrantes_tarefas_requisicao_tarefa_id_fkey" FOREIGN KEY ("requisicao_tarefa_id") REFERENCES "requisicao_tarefas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
