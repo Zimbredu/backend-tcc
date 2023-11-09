@@ -10,6 +10,7 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 
 import { CreateTaskController } from './controllers/task/CreateTaskController';
 import { ListTaskController } from './controllers/task/ListTaskController';
+import { ListAllTasksController } from './controllers/task/ListAllTasksController';
 
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
@@ -52,6 +53,8 @@ router.get('/category' ,isAuthenticated, new ListCategoryController().handle);
 router.post('/tasks',isAuthenticated, new CreateTaskController().handle);
 // rota para lista um produto pelo id_Categoria.
 router.get('/category/tasks',isAuthenticated, new ListTaskController().handle);
+// rota para lista todos os produtos.
+router.get('/all/tasks',isAuthenticated, new ListAllTasksController().handle);
 
 /* --ROTAS ORDER-- */
 // rota para cadastrar uma ordem de serviço.
