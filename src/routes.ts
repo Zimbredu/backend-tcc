@@ -20,6 +20,7 @@ import { RemoveItemController } from './controllers/order/RemoveItemController';
 import { SendOrderController } from './controllers/order/SendOrderController';
 
 import { ListOrdersController } from './controllers/order/ListOrdersController';
+import { ListEndedOrdersController } from './controllers/order/ListEndedOrdersController';
 
 import { DatailOrderController } from './controllers/order/DatailOrderController';
 
@@ -61,15 +62,21 @@ router.get('/all/tasks',isAuthenticated, new ListAllTasksController().handle);
 router.post('/order',isAuthenticated, new CreateOrderController().handle);
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle);
 
-// rota para adicionar um integrante a equipe.
-router.post('/order/add', isAuthenticated, new AddItemController().handle);
-// rota para deletar um integrante da equipe.
-router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle);
+    // Retirar
+    // rota para adicionar um integrante a equipe.
+    router.post('/order/add', isAuthenticated, new AddItemController().handle);
+
+    // Retirar
+    // rota para deletar um integrante da equipe.
+    router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle);
+
 // rota para atualizar um requisiçãoServico de (true para false).
 router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 
 // rota para listar todos os serviços/task confirmado, mas não finalizados.
 router.get('/orders', isAuthenticated, new ListOrdersController().handle);
+// rota para listar todos os projetos finalizados.
+router.get('/orders/ended', isAuthenticated, new ListEndedOrdersController().handle);
 // rota para listar os detalhes serviço/task
 router.get('/order/detail', isAuthenticated, new DatailOrderController().handle);
 // rota para finalizar uma tarefa.
