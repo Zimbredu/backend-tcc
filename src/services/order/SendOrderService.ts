@@ -12,6 +12,7 @@ class SendOrderService{
                 id: requisicao_tarefa_id
             },
             data:{
+                status: false,
                 draft: false
             }
         })
