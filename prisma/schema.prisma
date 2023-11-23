@@ -36,6 +36,7 @@ model Tarefa{//product table
   id String @id @default(uuid())
   name String  
   description String
+  status Boolean @default(false)
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 

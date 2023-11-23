@@ -28,6 +28,8 @@ import { FinishOrderController } from './controllers/order/FinishOrderController
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
+import {TaskUpDateController} from './controllers/task/TaskUpDateController'
+
 import uploadConfig from './config/multer';
 
 const router = Router();
@@ -56,7 +58,8 @@ router.post('/tasks',isAuthenticated, new CreateTaskController().handle);
 router.get('/category/tasks',isAuthenticated, new ListTaskController().handle);
 // rota para lista todos os produtos.
 router.get('/all/tasks',isAuthenticated, new ListAllTasksController().handle);
-
+// rota para atualizar as tarefas.
+router.put('/task', isAuthenticated, new TaskUpDateController().handle);
 /* --ROTAS ORDER-- */
 // rota para cadastrar uma ordem de serviço.
 router.post('/order',isAuthenticated, new CreateOrderController().handle);
