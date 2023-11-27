@@ -25,6 +25,7 @@ model CadastroUsuario{//user table
 model Categoria_Tarefa{// category table
   id String @id @default(uuid())
   name String
+  
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
@@ -36,20 +37,22 @@ model Tarefa{//product table
   id String @id @default(uuid())
   name String  
   description String
-  status Boolean @default(false)
+  status Boolean? @default(false)
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  tarefa Categoria_Tarefa @relation(fields: [categoria_tarefa_id], references: [id]) 
+  prioridade Categoria_Tarefa @relation(fields: [categoria_tarefa_id], references: [id]) 
+  requisicaotarefa Requisicao_Tarefa @relation(fields: [requisicao_tarefa_id], references: [id]) 
 
   @@map("tarefas")
   categoria_tarefa_id String
-   itemtarefas IntergranteTarefa[]
+  requisicao_tarefa_id String
+  itemtarefas IntergranteTarefa[]
 }
 
-model Requisicao_Tarefa{//order table
+model Requisicao_Tarefa{//order table (Projeto)
   id String @id @default(uuid())
-  task Int
+  task Int 
   status Boolean @default(false)
   draft Boolean @default(true)
   name String
@@ -59,11 +62,12 @@ model Requisicao_Tarefa{//order table
 
   @@map("requisicao_tarefas")
   itemtarefas IntergranteTarefa[]
+  tarefas Tarefa[]
 }
 
 model IntergranteTarefa{//Items table
   id String @id @default(uuid())
-  amount Int? //qtd de intergrantes para realizar a tarefa.
+  amount Int? //qtd de integrantes para realizar a tarefa.
 
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
